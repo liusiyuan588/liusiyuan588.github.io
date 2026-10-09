@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A minimal example of assembling and solving a sparse linear system."><meta name="color-scheme" content="light">
+<title>Sparse matrices in SciPy | Siyuan Liu</title>
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../../assets/js/main.js"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar"><div class="container nav-inner">
+<a class="brand" href="../../">Siyuan Liu</a>
+<button class="mobile-toggle" type="button" data-mobile-toggle aria-controls="top-navigation" aria-expanded="false">Menu</button>
+<nav aria-label="Main navigation"><ul class="nav-links" data-mobile-nav id="top-navigation"><li><a href="../../#about">About</a></li><li><a href="../../#research">Research</a></li><li><a href="../../#publications">Publications</a></li><li><a href="../../projects/">Projects</a></li><li><a href="../../notes/">Notes</a></li><li><a href="../../#contact">Contact</a></li></ul></nav>
+</div></header><main id="main"><div class="docs-shell"><div class="docs-grid"><aside class="docs-sidebar" aria-label="Project and notes navigation">
+<input class="doc-search" type="search" data-doc-search aria-label="Filter documentation navigation" placeholder="Filter pages…">
+<h2>Projects</h2><ul><li data-search-item><a href="../../projects/">Project overview</a></li><li data-search-item><a href="../../projects/soc-redox-fracture/">Redox-induced stress and fracture in solid oxide cells</a></li><li data-search-item><a href="../../projects/phase-field-fracture/">Phase-field modeling of crack propagation</a></li><li data-search-item><a href="../../projects/thermal-stress/">Thermomechanical stress in multilayer solid oxide cells</a></li><li data-search-item><a href="../../projects/scientific-computing/">Numerical methods and scientific computing</a></li></ul><h2>Technical Notes</h2><ul><li data-search-item><a href="../../notes/">Notes overview</a></li><li data-search-item><a href="../../notes/finite-element-weak-form/">From governing equations to the FEM weak form</a></li><li data-search-item><a href="../../notes/newton-iterations/">Newton iteration for nonlinear solid mechanics</a></li><li data-search-item><a href="../../notes/phase-field-fracture-basics/">Phase-field fracture: energy and crack regularization</a></li><li data-search-item><a href="../../notes/scipy-sparse-systems/" aria-current="page">Sparse matrices in SciPy</a></li></ul><p class="search-empty" data-search-empty>No matching pages.</p></aside><article class="docs-content"><p class="crumb"><a href="../../">Home</a> / Notes</p><h1>Sparse matrices in SciPy</h1><p class="lead">A minimal example of assembling and solving a sparse linear system.</p><h2 id="why-sparse-matrices">Why sparse matrices?</h2><p>Finite element stiffness matrices contain mostly zero entries because each element connects only a small set of degrees of freedom. Sparse storage avoids allocating memory for those zeros.</p><div class="math-line" role="group" aria-label="Mathematical equation">K u = f</div><h2 id="small-example">Small example</h2><p>The following code solves a 3 × 3 symmetric positive-definite system using CSR storage and a sparse direct solver.</p><pre><code>import numpy as np
+from scipy.sparse import csr_matrix
+from scipy.sparse.linalg import spsolve
+
+K = csr_matrix([[4.0, -1.0, 0.0],
+                [-1.0, 4.0, -1.0],
+                [0.0, -1.0, 3.0]])
+f = np.array([1.0, 2.0, 1.0])
+u = spsolve(K, f)
+print(u)</code></pre><h2 id="scale-up-note">Scale-up note</h2><p>For large FEM problems, assemble with COO or LIL and convert to CSR or CSC before solving. Compare direct and preconditioned iterative methods based on system size, conditioning, and matrix structure.</p><div class="math-line" role="group" aria-label="Mathematical equation">K ∈ ℝⁿˣⁿ,     nnz(K) ≪ n²</div><p class="notice">Technical notes are educational summaries, not a record of peer-reviewed results.</p></article><aside class="docs-toc" aria-label="On this page"><h2>On this page</h2><a href="#why-sparse-matrices">Why sparse matrices?</a><a href="#small-example">Small example</a><a href="#scale-up-note">Scale-up note</a></aside></div></div></main>
+<footer class="footer"><div class="container">© 2026 Siyuan Liu · <a href="../../">Home</a> · Built for GitHub Pages</div></footer>
+</body></html>
