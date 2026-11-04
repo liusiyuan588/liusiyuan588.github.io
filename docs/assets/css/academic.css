@@ -1,0 +1,99 @@
+/* AcademicPages-inspired static rendering.
+   Structural classes (masthead, author__*, page__*) track the upstream
+   MIT-licensed AcademicPages / Minimal Mistakes Jekyll layout.
+   Source: https://github.com/Si-Yuan-LIU/Si-Yuan-LIU.github.io
+   Copyright 2016 Michael Rose; see LICENSE-REFERENCE.
+*/
+:root { --ink:#333; --muted:#737373; --link:#286c99; --border:#e9e9e9; --width:1220px; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.52 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;color:var(--ink);background:white;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid #497da1;outline-offset:3px}
+img{max-width:100%;height:auto}
+h1,h2,h3{font-weight:600;line-height:1.3;color:#303030;letter-spacing:0}
+h1{font-size:27px;margin:0 0 20px}h2{font-size:21px;margin:35px 0 15px;padding-bottom:6px;border-bottom:1px solid var(--border)}h3{font-size:17px;margin:22px 0 8px}
+p{margin:0 0 14px}ul{margin:5px 0 17px;padding-left:22px}li{margin:5px 0}
+small,figcaption{color:var(--muted)}
+.masthead{border-bottom:1px solid var(--border);background:#fff}
+.masthead__inner-wrap{max-width:var(--width);margin:0 auto;padding:0 32px}
+.masthead__menu{display:flex;align-items:center;min-height:72px;gap:38px}
+.masthead__menu .site-title{color:#313131;font-size:18px;font-weight:700;white-space:nowrap}
+.masthead__menu .site-title:hover{text-decoration:none}
+.greedy-nav{display:flex;align-items:center;flex:1;justify-content:flex-end}
+.visible-links{display:flex;gap:27px;align-items:center;list-style:none;padding:0;margin:0}
+.visible-links li{margin:0}.visible-links a{color:#555;font-size:14.5px;font-weight:600;line-height:1.25}
+.visible-links a[aria-current="page"]{color:#222}.visible-links a:hover{color:var(--link)}
+#main{max-width:var(--width);margin:0 auto;display:grid;grid-template-columns:250px minmax(0,1fr);gap:55px;padding:48px 32px 90px;align-items:start}
+.sidebar{padding-top:7px;font-size:14px}
+.author__avatar{width:154px;height:154px;border-radius:50%;border:1px solid #e6e6e6;background:#fafafa;margin:0 0 20px;display:block}
+.author__name{font-size:20px;margin:0 0 6px;font-weight:700}
+.author__bio{color:#4b4b4b;margin-bottom:12px;line-height:1.45;font-size:14px}
+.author__affiliation{color:#666;font-size:13px;margin-bottom:17px}
+.author__urls{padding:0;list-style:none;margin:0}
+.author__urls li{margin:8px 0;font-size:13px;color:#777}
+.author__urls a{color:#666}.author__urls a:hover{color:var(--link)}
+.profile-link-icon{display:inline-block;width:20px;color:#888;font-weight:500;font-style:normal}
+.page{min-width:0}.page__inner-wrap{max-width:860px}
+.page__title{font-size:27px;font-weight:650;margin-bottom:17px}
+.page__content{font-size:16.5px;line-height:1.53}
+.page__content h2{font-size:21px;margin-top:29px}
+.page__content .affiliation-line{color:#555;font-size:15px}
+.page__content .education-list li{margin:4px 0}
+.research-list{display:flex;flex-direction:column;gap:0;margin:7px 0 0}
+.research-entry{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:18px;padding:17px 0 20px;border-bottom:1px solid #e9e9e9;align-items:start}
+.research-entry:last-child{border-bottom:0}
+.research-entry h3{margin:0 0 6px;font-size:17px}
+.research-entry p{margin:0 0 6px;font-size:15.5px;line-height:1.5}
+.research-entry .illustration{margin:0;text-align:center}
+.research-entry .illustration img{max-height:143px;width:100%;object-fit:contain;display:block}
+.research-entry .illustration figcaption{font-size:11.5px;margin-top:5px;line-height:1.45}
+.research-entry .illustration-space{width:100%;height:143px;background:white;border:1px solid #ededed}
+.read-more{font-size:14px}
+.figure{margin:20px 0 28px}.figure img{height:auto;width:auto;max-width:100%;display:block;margin:0 auto}
+.figure figcaption{font-size:13px;text-align:left;line-height:1.5;margin:7px 0 0;color:#666}
+.figure-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;align-items:start}
+.figure-grid .figure{margin:6px 0 18px}.figure-grid .figure img{max-height:230px;object-fit:contain}
+.figure--portrait img{max-height:590px}
+.page-links{margin-top:20px;display:flex;gap:24px;flex-wrap:wrap;font-size:14px}
+.page__footer{border-top:1px solid var(--border);padding:25px 32px;text-align:center;color:#8b8b8b;font-size:12px}
+.page__footer a{color:#6b6b6b}
+.muted-note{color:#777;font-size:14px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* One optional image and caption area is reserved in the source but hidden until supplied. */
+.optional-banner[hidden]{display:none}
+@media(max-width:850px){
+ .masthead__menu{gap:20px;min-height:65px}
+ .visible-links{gap:14px;flex-wrap:wrap;justify-content:flex-end}
+ .visible-links a{font-size:13px}
+ #main{grid-template-columns:180px minmax(0,1fr);gap:28px;padding:35px 25px 70px}
+ .author__avatar{height:126px;width:126px}
+ .page__content{font-size:16px}
+ .research-entry{grid-template-columns:minmax(0,1fr) 170px}
+}
+@media(max-width:650px){
+ .masthead__inner-wrap{padding:0 18px}
+ .masthead__menu{display:block;padding:13px 0 12px}
+ .masthead__menu .site-title{display:block;margin-bottom:9px;font-size:17px}
+ .greedy-nav{justify-content:flex-start;overflow-x:visible}
+ .visible-links{flex-wrap:wrap;gap:10px 19px;white-space:normal;padding-bottom:2px}
+ #main{display:block;padding:24px 20px 55px}
+ .sidebar{display:flex;flex-wrap:wrap;gap:15px 22px;border-bottom:1px solid var(--border);padding:0 0 17px;margin-bottom:26px}
+ .author__avatar{width:76px;height:76px;margin:0;flex:none}
+ .sidebar .author__details{flex:1;min-width:180px}
+ .author__name{font-size:18px;margin-top:0}
+ .author__urls{display:flex;flex-wrap:wrap;gap:0 17px}
+ .author__urls li{margin:3px 0}
+ .author__bio{margin-bottom:3px}
+ .page__title{font-size:25px;margin-bottom:15px}
+ .research-entry{grid-template-columns:1fr;gap:8px;padding:17px 0}
+ .research-entry .illustration{justify-self:start;width:min(100%,360px)}
+ .research-entry .illustration img{max-height:210px}
+ .research-entry .illustration-space{height:175px}
+ .figure-grid{grid-template-columns:1fr}
+ .page__content{line-height:1.5;font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Reserved figure area; intentionally left empty until an actual image is supplied. */
+.detail-figure-space{width:min(100%,620px);height:275px;background:#fff;border:1px solid #ededed;margin:18px 0 28px}
